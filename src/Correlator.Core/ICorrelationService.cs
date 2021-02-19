@@ -7,27 +7,27 @@
         /// </summary>
         /// <param name="key">Key of correlation.</param>
         /// <param name="value">Value of correlation.</param>
-        void AddCorrelation(string key, string value);
+        void Add(string key, string value);
         
         /// <summary>
         /// Updates existing correlation.
         /// </summary>
         /// <param name="key">Key of correlation.</param>
         /// <param name="value">Value of correlation.</param>
-        void UpdateCorrelation(string key, string value);
+        void Update(string key, string value);
         
         /// <summary>
         /// Checks if correlation exists.
         /// </summary>
         /// <param name="key">Key of correlation to check.</param>
         /// <returns>True when correlation exists.</returns>
-        bool CorrelationExists(string key);
+        bool Exists(string key);
         
         /// <summary>
         /// Returns correlation value.
         /// </summary>
         /// <param name="key">Key of correlation to get.</param>
         /// <returns>Value of correlation.</returns>
-        string GetCorrelation(string key);
+        string Get(string key);
     }
 }
