@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Correlator.Core
+namespace Correlator.Core.Exceptions
 {
     public abstract class CorrelationException : Exception
     {
