@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EE2E4048
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Correlator.Core.Tests", "tests\Correlator.Core.Tests\Correlator.Core.Tests.csproj", "{DA52741D-842F-43D3-901A-28A6EE647241}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Correlator.Core.Extensions.Microsoft.DependencyInjection", "src\Correlator.Core.Extensions.Microsoft.DependencyInjection\Correlator.Core.Extensions.Microsoft.DependencyInjection.csproj", "{11A33F2F-EAFD-4366-83D3-DC7FA4D87F8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,6 +18,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1A15C97D-CFE2-4C3B-A8CB-23AF32F30572} = {5B077166-DE9C-4E46-A6E3-C9F83BECF997}
 		{DA52741D-842F-43D3-901A-28A6EE647241} = {EE2E4048-6FD2-4965-95A1-085CDFEBF373}
+		{11A33F2F-EAFD-4366-83D3-DC7FA4D87F8D} = {5B077166-DE9C-4E46-A6E3-C9F83BECF997}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1A15C97D-CFE2-4C3B-A8CB-23AF32F30572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -26,5 +29,9 @@ Global
 		{DA52741D-842F-43D3-901A-28A6EE647241}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA52741D-842F-43D3-901A-28A6EE647241}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA52741D-842F-43D3-901A-28A6EE647241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A33F2F-EAFD-4366-83D3-DC7FA4D87F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A33F2F-EAFD-4366-83D3-DC7FA4D87F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A33F2F-EAFD-4366-83D3-DC7FA4D87F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A33F2F-EAFD-4366-83D3-DC7FA4D87F8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
