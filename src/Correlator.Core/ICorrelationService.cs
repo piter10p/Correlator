@@ -3,19 +3,12 @@
     public interface ICorrelationService
     {
         /// <summary>
-        /// Adds correlation to service.
+        /// Adds correlation to service or updates it.
         /// </summary>
         /// <param name="key">Key of correlation.</param>
         /// <param name="value">Value of correlation.</param>
-        void Add(string key, string value);
-        
-        /// <summary>
-        /// Updates existing correlation.
-        /// </summary>
-        /// <param name="key">Key of correlation.</param>
-        /// <param name="value">Value of correlation.</param>
-        void Update(string key, string value);
-        
+        void AddOrUpdate(string key, string value);
+
         /// <summary>
         /// Checks if correlation exists.
         /// </summary>

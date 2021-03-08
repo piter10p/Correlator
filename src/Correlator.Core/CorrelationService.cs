@@ -1,15 +1,15 @@
-﻿namespace Correlator.Core
+﻿using System;
+using System.Collections.Concurrent;
+
+namespace Correlator.Core
 {
     public class CorrelationService : ICorrelationService
     {
-        public void Add(string key, string value)
-        {
-            throw new System.NotImplementedException();
-        }
+        private readonly ConcurrentDictionary<string, string> _correlations = new ConcurrentDictionary<string, string>();
 
-        public void Update(string key, string value)
+        public void AddOrUpdate(string key, string value)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Exists(string key)

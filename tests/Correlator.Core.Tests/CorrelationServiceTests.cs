@@ -10,28 +10,6 @@ namespace Correlator.Core.Tests
     public class CorrelationServiceTests
     {
         [Fact]
-        public void Add_ExistsAlready_ShouldThrowExistsAlreadyException()
-        {
-            const string key = "TEST_KEY";
-            const string value = "TEST_VALUE";
-            const string value2 = "TEST_VALUE_2";
-            
-            var sut = new CorrelationService();
-            sut.Add(key, value);
-            Assert.Throws<CorrelationExistsAlreadyException>(() => sut.Add(key, value2));
-        }
-
-        [Fact]
-        public void Update_NotExists_ShouldThrowNotExistsException()
-        {
-            const string key = "TEST_KEY";
-            const string value = "TEST_VALUE";
-
-            var sut = new CorrelationService();
-            Assert.Throws<CorrelationNotExistsException>(() => sut.Update(key, value));
-        }
-
-        [Fact]
         public void Exists_NotExists_ShouldReturnFalse()
         {
             const string key = "TEST_KEY";
@@ -58,7 +36,7 @@ namespace Correlator.Core.Tests
             {
                 var key = GetKey(threadId, executionId);
                 var value = GetValue(threadId, executionId);
-                sut.Add(key, value);
+                sut.AddOrUpdate(key, value);
             });
             
             RunParallel((threadId, executionId) =>
@@ -69,7 +47,7 @@ namespace Correlator.Core.Tests
                 
                 sut.Exists(expectedKey).Should().BeTrue();
                 sut.Get(expectedKey).Should().BeEquivalentTo(expectedValue);
-                sut.Update(expectedKey, newValue);
+                sut.AddOrUpdate(expectedKey, newValue);
             });
             
             RunParallel((threadId, executionId) =>
