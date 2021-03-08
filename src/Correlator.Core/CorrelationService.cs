@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using Correlator.Core.Exceptions;
 
 namespace Correlator.Core
 {
@@ -9,17 +10,27 @@ namespace Correlator.Core
 
         public void AddOrUpdate(string key, string value)
         {
-            throw new NotImplementedException();
+            if (key is null) throw new ArgumentNullException(nameof(key));
+            if (value is null) throw new ArgumentNullException(nameof(value));
+
+            _correlations.GetOrAdd(key, value);
         }
 
         public bool Exists(string key)
         {
-            throw new System.NotImplementedException();
+            if (key is null) throw new ArgumentNullException(nameof(key));
+
+            return _correlations.ContainsKey(key);
         }
 
         public string Get(string key)
         {
-            throw new System.NotImplementedException();
+            if (key is null) throw new ArgumentNullException(nameof(key));
+
+            if (!Exists(key))
+                throw new CorrelationNotExistsException(key);
+
+            return _correlations[key];
         }
     }
 }
