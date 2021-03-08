@@ -34,20 +34,11 @@ namespace Correlator.Core.Tests
             
             RunParallel((threadId, executionId) =>
             {
-                var key = GetKey(threadId, executionId);
-                var value = GetValue(threadId, executionId);
-                sut.AddOrUpdate(key, value);
-            });
-            
-            RunParallel((threadId, executionId) =>
-            {
                 var expectedKey = GetKey(threadId, executionId);
                 var expectedValue = GetValue(threadId, executionId);
-                var newValue = GetValue2(threadId, executionId);
-                
+                sut.AddOrUpdate(expectedKey, expectedValue);
                 sut.Exists(expectedKey).Should().BeTrue();
                 sut.Get(expectedKey).Should().BeEquivalentTo(expectedValue);
-                sut.AddOrUpdate(expectedKey, newValue);
             });
             
             RunParallel((threadId, executionId) =>
@@ -55,6 +46,7 @@ namespace Correlator.Core.Tests
                 var expectedKey = GetKey(threadId, executionId);
                 var expectedValue = GetValue2(threadId, executionId);
 
+                sut.AddOrUpdate(expectedKey, expectedValue);
                 sut.Exists(expectedKey).Should().BeTrue();
                 sut.Get(expectedKey).Should().BeEquivalentTo(expectedValue);
             });
@@ -69,7 +61,7 @@ namespace Correlator.Core.Tests
         private string GetValue2(int threadId, int executionId)
             => $"2v{threadId}:{executionId}";
 
-            private void RunParallel(Action<int, int> action, int threadsCount = 10, int executionCount = 10)
+            private void RunParallel(Action<int, int> action, int threadsCount = 100, int executionCount = 100)
         {
             var threads = new List<Thread>();
 

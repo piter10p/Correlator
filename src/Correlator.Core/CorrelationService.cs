@@ -13,7 +13,7 @@ namespace Correlator.Core
             if (key is null) throw new ArgumentNullException(nameof(key));
             if (value is null) throw new ArgumentNullException(nameof(value));
 
-            _correlations.GetOrAdd(key, value);
+            _correlations.AddOrUpdate(key, value, (k, v) => value);
         }
 
         public bool Exists(string key)
