@@ -4,9 +4,9 @@ using System.Reflection;
 namespace Correlator.Providers.MediatR.Core
 {
     /// <summary>
-    /// Interface providing information about message fields and properties to use in correlation behaviour.
+    /// Interface providing information about Request fields and properties to use in <see cref="CorrelationBehaviour{TRequest,TResponse}"/> 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">MediatR Request</typeparam>
     public interface ICorrelationMap<T>
     {
         /// <summary>

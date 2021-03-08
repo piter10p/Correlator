@@ -7,10 +7,10 @@ using Correlator.Providers.MediatR.Core.Exceptions;
 namespace Correlator.Providers.MediatR.Core
 {
     /// <summary>
-    /// Implementation of correlation map to use along with MediatR Requests and Notifications.
+    /// Implementation of <see cref="ICorrelationMap{T}"/> to use along with MediatR Requests.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public abstract class CorrelationMap<T> : ICorrelationMap<T>
+    /// <typeparam name="TRequest">MediatR Request</typeparam>
+    public abstract class CorrelationMap<TRequest> : ICorrelationMap<TRequest>
     {
         public IDictionary<string, PropertyInfo> MappedProperties { get; } = new Dictionary<string, PropertyInfo>();
         public IDictionary<string, FieldInfo> MappedFields { get; } = new Dictionary<string, FieldInfo>();
@@ -18,9 +18,9 @@ namespace Correlator.Providers.MediatR.Core
         /// <summary>
         /// Adds property to correlation map.
         /// </summary>
-        public void UseProperty<TProperty>(Expression<Func<T, TProperty>> propertyExpression)
+        public void UseProperty<TProperty>(Expression<Func<TRequest, TProperty>> propertyExpression)
         {
-            var type = typeof(T);
+            var type = typeof(TRequest);
 
             if (!(propertyExpression.Body is MemberExpression member))
                 throw new CorrelationMapInvalidException($"Expression '{propertyExpression}' refers to a method, not a property.");
@@ -41,9 +41,9 @@ namespace Correlator.Providers.MediatR.Core
         /// <summary>
         /// Adds field to correlation map.
         /// </summary>
-        public void UseField<TField>(Expression<Func<T, TField>> fieldExpression)
+        public void UseField<TField>(Expression<Func<TRequest, TField>> fieldExpression)
         {
-            var type = typeof(T);
+            var type = typeof(TRequest);
 
             if (!(fieldExpression.Body is MemberExpression member))
                 throw new CorrelationMapInvalidException($"Expression '{fieldExpression}' refers to a method, not a field.");
